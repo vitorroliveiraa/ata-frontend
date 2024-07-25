@@ -1,6 +1,8 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/16/solid";
 
 export default function Form() {
+  // SEM USO
+  // MAS POSSO CHAMAR A PAGE DE REGISTRATION AQUI
   return (
     <form>
       <div className="space-y-12">

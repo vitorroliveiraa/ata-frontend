@@ -5,5 +5,5 @@ const Body = () => {
     </main>
   );
 };
-
+// SEM USO
 export default Body;

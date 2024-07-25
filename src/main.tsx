@@ -12,7 +12,6 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        // Lifted blog splat route
         path: "/",
         element: <TabCustom />,
       },

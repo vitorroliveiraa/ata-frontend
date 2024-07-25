@@ -1,4 +1,4 @@
-export default function Menu() {
+export default function Header() {
   return (
     <header>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-5 lg:px-8">
