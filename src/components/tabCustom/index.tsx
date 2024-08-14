@@ -1,28 +1,36 @@
-import {
-  Button,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
-} from "@headlessui/react";
+// import {
+//   Button,
+//   Tab,
+//   TabGroup,
+//   TabList,
+//   TabPanel,
+//   TabPanels,
+// } from "@headlessui/react";
 import { useState } from "react";
 import List from "../list/index.tsx";
 import { useNavigate } from "react-router-dom";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs.tsx";
+import { Button } from "../ui/button.tsx";
+import { UserPlus } from "lucide-react";
 
-const UnderlineCustom = ({ tab1, tab2 }) => {
+interface UnderlineCustomProps {
+  tab1: boolean;
+  tab2: boolean;
+}
+
+const UnderlineCustom = ({ tab1, tab2 }: UnderlineCustomProps) => {
   return (
-    <div className="w-full h-2 bg-gray-500 rounded-2xl grid grid-flow-col justify-stretch">
+    <div className="w-auto px-4 h-2 bg-gray-500 rounded-2xl flex items-center justify-between">
       <div>
         <div
-          className={`h-2 w-full bg-sky-600 rounded-2xl ${
+          className={`h-2 w-auto bg-sky-600 rounded-2xl ${
             !tab1 ? "hidden" : ""
           }`}
         />
       </div>
       <div>
         <div
-          className={`h-2 w-full bg-sky-600 rounded-2xl ${
+          className={`h-2 w-auto bg-sky-600 rounded-2xl ${
             !tab2 ? "hidden" : ""
           }`}
         />
@@ -48,39 +56,41 @@ const TabCustom = () => {
   };
 
   return (
-    <TabGroup defaultIndex={0} className="flex flex-col">
-      <TabList className="grid grid-flow-col justify-stretch">
-        <Tab
-          className={`text-lg font-bold py-3 rounded-md ${
-            isTab1Active ? "text-sky-600" : "text-gray-500"
-          }`}
+    <Tabs
+      defaultValue="inscritos"
+      className="flex flex-col max-w-3xl w-full self-center"
+    >
+      <TabsList className="m-4">
+        <TabsTrigger
+          value="inscritos"
           onClick={handleTab1Click}
+          className="text-md h-8 w-full"
         >
           Inscritos
-        </Tab>
-        <Tab
-          className={`text-lg font-bold size  py-3 rounded-md ${
-            isTab2Active ? "text-sky-600" : "text-gray-500"
-          }`}
+        </TabsTrigger>
+        <TabsTrigger
+          value="confirmados"
           onClick={handleTab2Click}
+          className="text-md h-8 w-full"
         >
           Confirmados
-        </Tab>
-      </TabList>
-      <UnderlineCustom tab1={isTab1Active} tab2={isTab2Active} />
-      <TabPanels className="m-4">
-        <TabPanel className="text-center">
-          <Button
-            className="w-full rounded bg-sky-600 py-2 px-4 text-sm text-white data-[hover]:bg-sky-700 data-[active]:bg-sky-700"
-            onClick={() => navigate("/criar")}
-          >
-            Nova inscrição
-          </Button>
-          <List />
-        </TabPanel>
-        <TabPanel>Content 2</TabPanel>
-      </TabPanels>
-    </TabGroup>
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="inscritos" className="m-4">
+        <Button
+          variant="outline"
+          className="w-40 right rounded bg-sky-600 py-2 px-4 text-sm text-white hover:bg-sky-700 hover:text-muted active:bg-sky-700"
+          onClick={() => navigate("/criar")}
+        >
+          <UserPlus className="w-4 h-4 mr-2" />
+          Nova inscrição
+        </Button>
+        <List />
+      </TabsContent>
+      <TabsContent value="inscritos" className="m-4">
+        <label htmlFor="teste">teste</label>
+      </TabsContent>
+    </Tabs>
   );
 };
 

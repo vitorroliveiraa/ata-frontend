@@ -1,15 +1,15 @@
 export default function Header() {
   return (
     <header>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-5 lg:px-8">
+      <nav className="mx-auto flex max-w-3xl items-center justify-between p-4">
         <div className="flex lg:flex-1">
           {/* <h1>Perfil</h1> */}
-          <div className="flex -space-x-2 overflow-hidden bg-gray-300 p-3 rounded-full">
+          <div className="flex -space-x-2 overflow-hidden bg-gray-100 p-3 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="size-8"
+              className="size-7"
             >
               <path
                 fillRule="evenodd"
@@ -20,14 +20,14 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="lg:flex lg:justify-end bg-gray-300 p-3 rounded-full">
+        <div className="lg:flex lg:justify-end bg-gray-100 p-3 rounded-full">
           {/* Notificações */}
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="size-8"
+            className="size-7"
           >
             <path
               fillRule="evenodd"

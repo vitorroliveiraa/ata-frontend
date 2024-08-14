@@ -1,6 +1,14 @@
 import { Input } from "@/components/ui/input.tsx";
+import React from "react";
 
-const TextInput = ({ label, id, name, placeholder }) => {
+interface Props {
+  label: string;
+  id: string;
+  name: string;
+  placeholder: string;
+}
+
+const TextInput: React.FC<Props> = ({ label, id, name, placeholder }) => {
   return (
     <>
       <label
