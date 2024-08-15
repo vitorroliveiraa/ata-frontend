@@ -1,11 +1,10 @@
-import React from "react";
 import { Button } from "../ui/button.tsx";
 
 interface Props {
   label: string;
 }
 
-const DefaultButton: React.FC<Props> = ({ label }) => {
+const DefaultButton = ({ label }: Props) => {
   return (
     <>
       <Button

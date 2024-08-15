@@ -87,9 +87,7 @@ const TabCustom = () => {
         </Button>
         <List />
       </TabsContent>
-      <TabsContent value="inscritos" className="m-4">
-        <label htmlFor="teste">teste</label>
-      </TabsContent>
+      <TabsContent value="inscritos" className="m-4"></TabsContent>
     </Tabs>
   );
 };

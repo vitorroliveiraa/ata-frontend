@@ -109,13 +109,15 @@ const TimeInput = ({ label }: Props) => {
           `[data-minute="${minute}"]`
         );
 
-        if (hourElement && minuteElement) {
+        if (hourElement) {
           hourElement.scrollIntoView({
-            behavior: "smooth",
+            behavior: "instant",
             block: "center",
           });
+        }
+        if (minuteElement) {
           minuteElement.scrollIntoView({
-            behavior: "smooth",
+            behavior: "instant",
             block: "center",
           });
         }
