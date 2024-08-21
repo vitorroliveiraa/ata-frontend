@@ -1,14 +1,20 @@
+import { IFormInput } from "@/components/form/index.tsx";
 import { Input } from "@/components/ui/input.tsx";
-import React from "react";
+import { UseFormRegister } from "react-hook-form";
 
-interface Props {
-  label: string;
-  id: string;
-  name: string;
-  placeholder: string;
+interface ITextInput {
+  fullName: string;
 }
 
-const TextInput: React.FC<Props> = ({ label, id, name, placeholder }) => {
+interface Props {
+  id: string;
+  name: keyof IFormInput;
+  label: string;
+  placeholder: string;
+  register: UseFormRegister<IFormInput>;
+}
+
+const TextInput = ({ label, id, name, placeholder, register }: Props) => {
   return (
     <>
       <label
@@ -18,7 +24,12 @@ const TextInput: React.FC<Props> = ({ label, id, name, placeholder }) => {
         {label}
       </label>
       <div className="relative mt-1 rounded-md shadow-sm">
-        <Input id={id} name={name} type="text" placeholder={placeholder} />
+        <Input
+          id={id}
+          type="text"
+          placeholder={placeholder}
+          {...register(name)}
+        />
       </div>
     </>
   );

@@ -1,3 +1,4 @@
+import { IFormInput } from "@/components/form/index.tsx";
 import {
   Select,
   SelectContent,
@@ -7,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select.tsx";
-import React from "react";
+import { UseFormRegister, Controller, Control } from "react-hook-form";
 
 type OptionsSelect = {
   value: string;
@@ -15,18 +16,24 @@ type OptionsSelect = {
 };
 
 interface Props {
+  name: keyof IFormInput;
   label: string;
   placeHolder?: string;
   selectLabel?: string;
   options: OptionsSelect[];
+  register?: UseFormRegister<IFormInput>;
+  control: Control<IFormInput>;
 }
 
-const SelectInput: React.FC<Props> = ({
+const SelectInput = ({
+  name,
   label,
   placeHolder = "Selecione uma opção",
   selectLabel = "",
   options = [],
-}) => {
+  register,
+  control,
+}: Props) => {
   return (
     <>
       <label
@@ -36,19 +43,29 @@ const SelectInput: React.FC<Props> = ({
         {label}
       </label>
       <div className="mt-1">
-        <Select>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder={placeHolder} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>{selectLabel}</SelectLabel>
-              {options.map((i) => (
-                <SelectItem value={i.value}>{i.text}</SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        <Controller
+          name={name}
+          control={control}
+          render={({ field }) => (
+            <Select
+              onValueChange={field.onChange}
+              {...field}
+              value={(field.value as string) || ""}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder={placeHolder} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>{selectLabel}</SelectLabel>
+                  {options.map((i) => (
+                    <SelectItem value={i.value}>{i.text}</SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          )}
+        />
       </div>
     </>
   );
